@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from service.quest_picker import get_quest
 app = FastAPI()
 
 
@@ -10,8 +11,7 @@ async def root():
         "message": "Code-Quest learning API is running successfully"
     }
 
-@app.get("/daily-challange", status_code=200)
-async def daily_challange():
-    return {
-        "status": "ok",
-    }
+@app.get("/daily-quest", status_code=200)
+async def daily_quest():
+    return get_quest()
+
